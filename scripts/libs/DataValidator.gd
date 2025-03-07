@@ -63,10 +63,10 @@ static func dict(schema = {}) -> DataValidator:
 	validator._dict_schema = schema
 	return validator
 	
-static func object(obj_type) -> DataValidator:
+static func object(obj_type: Object) -> DataValidator:
 	var validator = DataValidator.new()
 	validator._type = Type.OBJECT
-	validator._custom_validator = func(value): return value is obj_type
+	validator._custom_validator = func(value): return value is Object
 	return validator
 	
 static func any() -> DataValidator:
