@@ -13,10 +13,10 @@ func validar_usuario():
 		"idade": DataValidator.int().min(18),
 		"email": DataValidator.string().regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"),
 		"avatar": DataValidator.string().optional(),
-		# "configuracoes": DataValidator.dict({
-		# 	"tema": DataValidator.string().values(["claro", "escuro", "sistema"]).default("sistema"),
-		# 	"notificacoes": DataValidator.bool().default(true)
-		# })
+		"configuracoes": DataValidator.dict({
+			"tema": DataValidator.string().values(["claro", "escuro", "sistema"]).default("sistema"),
+			"notificacoes": DataValidator.bool().default(true)
+		})
 	})
 
 	# Dados válidos
@@ -40,7 +40,10 @@ func validar_usuario():
 	var dados_invalidos = {
 		"nome": "Jo", # Nome muito curto
 		"idade": 16, # Idade abaixo do mínimo
-		"email": "invalido" # Email inválido
+		"email": "invalido", # Email inválido
+		"configuracoes": {
+			"tema": "roxo" # Tema inválido
+		}
 	}
 
 	# Validar dados inválidos
